@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The simplest way to monitor, control, and automate your aquarium. Welcome to the connected aquarium.">
+    <meta name="keywords" content="Fishbit Aquarium Monitor Controller Fish Reef">
+    <meta name="author" content="">
+
+    <title>
+    Fisbit - Your Aquarium Made Simple
+    </title>
+
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <link href="assets/css/toolkit-startup.min.css" rel="stylesheet">
+    <link href="assets/css/application-startup.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
+    <!-- bg video -->
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.background-video.css">
+    <!-- Overlay -->
+    <link href="assets/css/style1.css" rel="stylesheet">
+    <script src="assets/js/modernizr.custom.js"></script>
+    <!-- To add links that trigger the overlay, i need to add an event listner to demo1.js -->
+
+    <link rel="shortcut icon" href="favicon_sharp.ico" type="image/x-icon">
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-74081350-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '508808995947898');
+    fbq('track', "PageView");</script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=508808995947898&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+<!--
+:::::::::::::::#######`:::::::::::::::::::
+::::::::::::::::#.```...#:::::::::::::::::
+:::::::::::::::::#`````..#::::::::::::::::
+::::::::::::::::::#`.....##:::::::::::::::
+:::::::::::::::::::#....####::::::::::::::
+:::::::::::::::::::#...######:::::::::::::
+::::::#:::::::::::#...########::::::::::::
+::::::##:::::::::#...##########:::::::::::
+::::::#`#:::::::#...############::::::::::
+::::::#..#:::::#..###############:::::::::
+::::::#.`.#:::#...################::::::::
+::::::#.``.#:#...##################:::::::
+::::::#.``..#....###################::::::
+::::::#.```......###################.:::::
+::::::#.`........####################:::::
+::::::#.``..#......##############.##::::::
+::::::#.`..#:#.``...##########...##:::::::
+::::::#``.#:::.#.``...#####.....##::::::::
+::::::#..#:::::`#.```..........##:::::::::
+::::::#`#::::::::#.```......`.##::::::::::
+::::::##:::::::::#.````..```.#::::::::::::
+::::::#::::::::::#.###``````#:::::::::::::
+::::::::::::::::.###:##.``.#::::::::::::::
+::::::::::::::::##::::##.##:::::::::::::::
+:::::::::::::::::::::::###::::::::::::::::
+::::::::::::::::::::::::#:::::::::::::::::
+####: #:  ####   #: #: #####:  #: #######:
+#:    #: #:   #: #: #: #:   #: #:    #:
+#:       #:   #: #: #: #:   #:       #:
+#:    #: #:      #: #: #:   #: #:    #:
+#:    #: #:      #: #: #:   #: #:    #:
+#:    #: #:      #: #: #:   #: #:    #:
+#:    #:  ##     #: #: #:   #: #:    #:
+####: #:   ##    ####: #####:  #:    #:
+#:    #:    ##   #: #: #:   #: #:    #:
+#:    #:      #: #: #: #:   #: #:    #:
+#:    #:      #: #: #: #:   #: #:    #:
+#:    #:      #: #: #: #:   #: #:    #:
+#:    #:      #: #: #: #:   #: #:    #:
+#:    #: #:   #: #: #: #:   #: #:    #:
+#:    #: #:   #: #: #: #:   #: #:    #:
+#:    #:  ####   #: #: #####:  #:    #:-->
+
+  </head>
+
+<body>
+  
+<!-- navbar -->
+<nav class="navbar navbar-transparent navbar-fixed-top app-navbar p-t p-b">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed p-x-0"
+              data-target="#stage" data-toggle="stage" data-distance="-250">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a href="index.html"><img src="assets/img/use/logo-260.png" class="nav-logo" alt=""></a>
+    </div>
+    <div class="navbar-collapse collapse text-uppercase">
+      <ul class="nav navbar-nav navbar-right">
+        <li >
+          <a href="#" id="trigger-overlay">Get the App</a>
+        </li>
+        <li >
+          <a href="https://shop.getfishbit.com/" class="btn btn-pill btn-info">SHOP NOW</a>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+
+<!-- header -->
+<div class="block block-inverse block-fill-height element-with-video-bg jquery-background-video-wrapper">
+
+    <video loop autoplay muted poster="assets/img/use/poster.png" data-bgvideo="true">
+        <source src="assets/img/use/bgvideo.mp4" type="video/mp4">
+        <source src="assets/img/use/bgvideo.webm" type="video/webm">
+        <source src="assets/img/use/bgvideo.ogv" type="video/ogg">
+    </video>
+    <div class="video-overlay"></div>
+
+    <div class="container p-t-lg">
+      <div class="row">
+        <div class="col-md-7">
+          <h1 class="block-title m-b-sm">Beautiful Aquariums Made Easy.</h1>
+          <p class="lead m-b-md text-muted">Introducing the Fishbit App. Everything your aquarium needs in the palm of your hand. Welcome to the future of fish and reef-keeping.<br>
+          <a href="#" id="trigger-overlay1">Get the App ></a><br>
+          <a href="https://shop.getfishbit.com/">Preorder your Fishbit hardware now ></a>
+          </p>
+        </div>
+<!--         <div class="col-md-4 col-md-offset-1">
+          <img class="img-responsive" src="assets/img/startup-2.jpg">
+        </div> -->
+      </div>
+    </div>
+</div>
+
+<!-- references ribbon -->
+<div class="block app-ribbon p-y-lg wrapper-gradient">
+  <div class="container text-center">
+    <img src="assets/img/startup-4.svg">
+    <img src="assets/img/startup-5.svg">
+    <img src="assets/img/startup-6.svg">
+    <img src="assets/img/startup-7.svg">
+    <img src="assets/img/startup-8.svg">
+  </div>
+</div>
+
+<div class="block block-secondary app-iphone-block">
+  <div class="container">
+    <div class="row app-align-center">
+
+      <div class="col-sm-5 hidden-xs">
+        <img class="app-iphone" src="assets/img/use/heroshot.png" style="width: 100%;">
+      </div>
+
+      <div class="col-sm-6 col-sm-offset-1">
+        <h6 class="text-muted text-uppercase">YOUR AQUARIUM IN THE PALM OF YOUR HAND</h6>
+        <h3 class="m-t-0">Track Everything.</h3>
+        <p class="lead m-b-md">The Fishbit App let's you track your aquarium’s temperature, pH, salinity, nitrites, nitrates, ammonia, and other levels so you know exactly what’s going on in your aquarium.<br></p>
+        <div class="row hidden-sm">
+          <div class="col-sm-6 m-b-md">
+            <h5 class="m-y-0">Never forget the little things</h5>
+            <p>Set reminders for things like when to change your light bulbs.</p>
+          </div>
+          <div class="col-sm-6">
+            <h5 class="m-y-0">Know what's in your tank</h5>
+            <p>Track your fish, corals and inverts as your tank thrives.</p>
+          </div>
+        </div>
+        <a href="#" class="btn btn-pill btn-info btn-lg btn-borderless" id="trigger-overlay2">Get the App ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- overlay -->
+<div class="overlay overlay-hugeinc">
+  <div class="block block-inverse block-fill-height text-ceter">
+    <button type="button" class="overlay-close">Close</button>
+    <div class="container">
+      <div class="row col-md-8 col-md-offset-2 p-t-md">
+        <h1>Get the Fishbit App</h1>
+        <p class="lead">Track parameters, set reminders and so much more! Pair it with our Monitor and Controller to track pH, temperature and salinity readings in real time. Automate your aquarium using the Fishbit app. Prevent disasters before they happen and so much more!<br><br></p>
+        <h4>Choose an App Store:</h4><br>
+        <a href="https://itunes.apple.com/us/app/fishbit/id1126601345"><img class="badger p-r" src="assets/img/use/as.svg"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.currentlabs.fishbit"><img class="badger" src="assets/img/use/gp.png"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- monitor your water! -->
+<div class="block block-inverse block-secondary water-gradient">
+  <div class="container">
+    <div class="row app-align-center">
+      <div class="col-sm-5 col-sm-push-7">
+        <img src="assets/img/use/newmonitor.png" style="width: 100%;">
+      </div>
+
+      <div class="col-sm-6 col-sm-pull-5 p-y-md">
+        <h6 class="text-muted text-uppercase">The Fishbit Monitor</h6>
+        <h3 class="m-t-0">Make Informed Decisions with Real-time Data.</h3>
+        <p class="lead m-b-md text-muted">The Fishbit Monitor combiness immediate real time events with rich historical data in the Fishbit App so you can spend more time enjoying your tank and less time testing your water.</p>
+          <ul class="iconlist">
+            <li><span class="icon icon-check"></span>Real-time temperature, pH, and Salinity data no matter where you are</li>
+            <li><span class="icon icon-check"></span>Instant alerts when your critical levels are out of range</li>
+            <li><span class="icon icon-check"></span>Connects to your home's WiFi so your setup in seconds</li>
+          </ul>
+        <br>
+        <a href="https://shop.getfishbit.com/" class="btn btn-pill btn-default btn-lg btn-borderless">SHOP HARDWARE</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- the fishbit controller -->
+<div class="block app-price-plans">
+  <div class="container text-center">
+
+    <div class="row m-b-lg">
+      <div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+        <h6 class="text-muted text-uppercase">The Fishbit Ecosystem</h6>
+        <h3  class="m-t-0">Connect, Automate, and Control your Entire Aquarium.</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4 p-x m-b-lg">
+        <div class="p-x">
+          <h6 class="text-muted text-uppercase m-b">Your Existing Devices</h6>
+          <img class="caro-img p-b-md p-t-md" src="assets/img/use/controller2.png">
+          <p>The Fishbit Controller makes sure that the equipment around your aquarium is operating optimally 24/7.<br><br>Easily control and automate your heaters, pumps, and LEDs.</p><br>
+          <a href="https://shop.getfishbit.com/" class="btn btn-pill btn-info btn-borderless">SHOP HARDWARE</a>
+        </div>
+      </div>
+
+      <div class="col-sm-4 p-x m-b-lg">
+        <div class="p-x">
+          <h6 class="text-muted text-uppercase m-b">Devices Powered by Fishbit</h6>
+          <img class="caro-img p-b" src="assets/img/use/rapidledcorona.png">
+          <p>Setup and control the best new aquarium equipment like the <a target="_blank" href="http://www.rapidled.com/corona-by-rapid-led/">Rapid LED Corona</a> right from your phone using the Fishbit App.</p>
+
+        </div>
+      </div>
+
+      <div class="col-sm-4 p-x m-b-lg">
+        <div class="p-x">
+          <h6 class="text-muted text-uppercase m-b">Control, Like Never Before</h6>
+          <img class="caro-img p-b" src="assets/img/use/control.png">
+          <p>Remotely turn connected equipment on and off. Easily create scripts like "turn my heater off if my water ever exceeds 82&deg;. And track how much energy your aquarium is drawing. All from your phone.</p>
+          <br>
+          <a href="#" class="btn btn-pill btn-info btn-borderless" id="trigger-overlay3">GET THE APP</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- how it works -->
+<div class="block block-inverse teal">
+  <div class="container text-center">
+    <div class="row m-b-lg">
+      <div class="col-sm-8 col-sm-offset-2">
+        <img class="place-img p-b" src="assets/img/use/monitorside.png">
+        <h6 class="text-muted text-uppercase">How it works</h6>
+        <h3  class="m-t-0">No engineering required.</h3>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <img class="how-img p-b p-t" src="assets/img/use/1.png">
+          <h4 class="text-uppercase m-b">Download</h4>
+          <p>Download the App and connect your devices to your home's WiFi. You'll be up and running in less than a minute.</p>
+          <a href="#" class="btn btn-pill btn-info btn-borderless" id="trigger-overlay4">GET THE APP</a>
+        </div>     
+        <div class="col-sm-4">
+          <img class="how-img p-b p-t" src="assets/img/use/2.png">
+          <h4 class="text-uppercase m-b">Place</h4>
+          <p>Have a Fishbit Monitor and/or Controller? Place your Monitor in your water. Plug in your Controller in nearby and connect the devices you'd like to control into the Controller.</p>
+        </div>
+        <div class="col-sm-4">
+          <img class="how-img p-b p-t" src="assets/img/use/3.png">
+          <h4 class="text-uppercase m-b">Enjoy</h4>
+          <p>Use the Fishbit App to track, control and automate your aquarium from anywhere, at any time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 
+<div class="block block-inverse block-secondary app-code-block">
+  <div class="container">
+    <div class="row app-align-center">
+      <div class="col-sm-5 col-sm-push-7">
+        <pre class="app-code">
+<span>1</span> <span class="hidden-xs">goAnalytics</span> “who are the latest 3 users?”
+<span>2</span>
+<span>3</span>  {
+<span>4</span>    "Dave": {
+<span>5</span>      "fullName": "Dave Gamache",
+<span>6</span>      "twitterHandle": "@dhg",
+<span>7</span>    }
+<span>8</span>    "Mark": {
+<span>9</span>      "fullName": "Mark Otto",
+<span>10</span>      "twitterHandle": "@mdo",
+<span>11</span>    }
+<span>12</span>    "Jacob": {
+<span>13</span>      "fullName": "Jacob Thornton",
+<span>14</span>      "twitterHandle": "@fat",
+<span>15</span>    }
+<span>16</span>  }</pre>
+      </div>
+
+      <div class="col-sm-6 col-sm-pull-5">
+        <h6 class="text-muted text-uppercase">Easy development</h6>
+        <h3 class="m-t-0">Natural language queries make mining data easy for anyone.</h3>
+        <p class="lead m-b-md text-muted">Rather than force everyone at your company to learn incredibly difficult terminal commands, we allow anyone to query the data with natural language to return data.</p>
+        <button class="btn btn-default btn-lg btn-borderless">
+          Read our docs
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="block block-secondary app-high-praise p-b-0">
+  <div class="container">
+    <div class="row app-align-center">
+      <div class="col-sm-5 col-sm-push-7">
+        <h6 class="text-muted text-uppercase">High Praise</h6>
+        <h3 class="m-t-0 m-b-md">“Go Analytics is amazing. Decisions that used to take weeks, now only takes minutes and is available to everyone on my team.”</h3>
+        <p class="m-b-md text-muted">Cindy Smith, founder of Cool Startup</p>
+      </div>
+      <div class="col-sm-6 col-sm-pull-5">
+        <img src="assets/img/startup-3.jpg">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="block block-secondary app-block-marketing-grid">
+  <div class="container text-center">
+
+    <div class="row m-b-lg">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+        <h6 class="text-muted text-uppercase">Inside the machine</h6>
+        <h3  class="m-t-0 m-b">It’s not hard to see how we make your life easier every day.</h3>
+      </div>
+    </div>
+
+    <div class="row app-marketing-grid">
+      <div class="col-sm-4 p-x-md m-b-lg">
+        <img class="m-b" src="assets/img/startup-9.svg">
+        <p><strong>24/7 support.</strong> We’re always here for you no matter what time of day.</p>
+      </div>
+      <div class="col-sm-4 p-x-md m-b-lg">
+        <img class="m-b" src="assets/img/startup-10.svg">
+        <p><strong>E-commerce.</strong> We automatically handle all sales analytics.</p>
+      </div>
+      <div class="col-sm-4 p-x-md m-b-lg">
+        <img class="m-b" src="assets/img/startup-11.svg">
+        <p><strong>Turnaround.</strong> Our data analysis is distributed, so it processes in seconds.</p>
+      </div>
+    </div>
+
+    <div class="row app-marketing-grid">
+      <div class="col-sm-4 p-x-md m-b-lg">
+        <img class="m-b" src="assets/img/startup-12.svg">
+        <p><strong>Rich calculations.</strong> Limitless ways to splice and dice your data.</p>
+      </div>
+      <div class="col-sm-4 p-x-md m-b-lg">
+        <img class="m-b" src="assets/img/startup-13.svg">
+        <p><strong>Mobile apps.</strong> iOS and Android apps available for monitoring.</p>
+      </div>
+      <div class="col-sm-4 p-x-md m-b-lg">
+        <img class="m-b" src="assets/img/startup-14.svg">
+        <p><strong>Secure connections.</strong> Every single request is routed through HTTPS.</p>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+<div class="block block-inverse app-footer">
+ <div class="container">
+    <div class="row">
+      <div class="col-sm-5 m-b-md">
+        <ul class="list-unstyled list-spaced">
+          <li class="m-b"><h6 class="text-uppercase">News & Updates</h6></li>
+          <li class="text-muted">
+           Enter your email address so you never miss out on product updates.
+            <div class="row">
+              <br>
+              <form class="form-inline">
+                <input class="form-control m-b" placeholder="email address">
+                <button class="btn btn-pill btn-info m-b">JOIN OUR MAILING LIST</button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-2 col-sm-offset-1 m-b-md">
+        <ul class="list-unstyled list-spaced">
+          <li class="m-b"><h6 class="text-uppercase">Product</h6></li>
+          <li class="text-muted">FAQs</li>
+          <li class="text-muted">Shop</li>
+          <li class="text-muted">Help</li>
+        </ul>
+      </div>
+      <div class="col-sm-2 m-b-md">
+        <ul class="list-unstyled list-spaced">
+          <li class="m-b"><h6 class="text-uppercase">Company</h6></li>
+          <li class="text-muted">About</li>
+          <li class="text-muted">Press</li>
+          <li class="text-muted">Legal</li>
+        </ul>
+      </div>
+      <div class="col-sm-2 m-b-md">
+        <ul class="list-unstyled list-spaced">
+          <li class="m-b"><h6 class="text-uppercase">More</h6></li>
+          <li class="text-muted"><a href="mailto:Hello@GetFishbit.com">Hello@GetFishbit.com</a></li>
+          <li class="text-muted">Facebook</li>
+          <li class="text-muted">Twitter</li>
+          <li class="text-muted">Instagram</li>
+          <li class="text-muted">YouTube</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/toolkit.js"></script>
+    <script src="assets/js/application.js"></script>
+    <!-- bg video -->
+    <script src="assets/js/jquery.background-video.js"></script>
+    <!-- overlay -->
+    <script src="assets/js/classie.js"></script>
+    <script src="assets/js/demo1.js"></script>
+  </body>
+</html>
+

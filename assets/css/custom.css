@@ -1,0 +1,86 @@
+	/*
+
+FB Colors
+
+teal - #3CD5D6
+aquamarine - #63FFBE
+royal blue - #0E2260
+dark blue - #00142A
+light purp - #685D9F
+offwhite - #D6E6F1
+
+*/
+
+.nav-logo {
+    max-height: 40px;
+    vertical-align: middle;
+}
+
+.block-fill-height {
+    height: 87vh; // this is where we set the percentage of screen the video should take
+}
+
+.video-overlay{
+    background-image: url('../img/use/black-small-checks.png');
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    pointer-events:none;
+    opacity:0.5;
+    background-repeat:repeat;
+}
+
+.hero-overlay {
+    // display: none;
+    position: absolute;
+    // top: 0;
+    top: 200px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    vertical-align: center;
+    // color: #fff;
+    // background: rgba(0, 0, 0, 0.15);
+    // z-index: 1;
+}
+
+.badger {
+    height: 50px;
+}
+
+.wrapper-gradient {
+    background: transparent radial-gradient(circle farthest-side at right bottom, #63FFBE 5%, #63FFBE 25%, #3CD5D6 80%, #3CD5D6 98%) repeat scroll 0% 0%;
+}
+
+.caro-img {
+	width: 100%;
+	height: auto;
+}
+
+.place-img {
+    height: 160px;
+}
+
+.how-img {
+    max-height: 80px;
+    width: auto;
+}
+
+.app-block-design-img {
+	margin-top: -286px;
+	margin-left: 0;
+	float: left;
+	width: 100%;
+	overflow-x: hidden; 
+}
+
+.teal {
+	background-color: #3CD5D6;
+}
+
+.water-gradient {
+	background: transparent radial-gradient(circle farthest-side at right bottom, #63FFBE 5%, #63FFBE 25%, #3CD5D6 80%, #3CD5D6 98%) repeat scroll 0% 0%;
+	padding: 0;
+}
